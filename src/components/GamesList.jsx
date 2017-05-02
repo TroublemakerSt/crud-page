@@ -16,7 +16,6 @@ export default function GamesList({ games }) {
   );
 }
 
-
 GamesList.propTypes = {
   games: React.PropTypes.array.isRequired,
 };
