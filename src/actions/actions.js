@@ -6,6 +6,7 @@ function handleResponse(response) {
   } else {
     let error = new Error(response.statusText);
     error.response = response;
+    console.log(error.response);
     throw error;
   }
 }
@@ -24,7 +25,6 @@ export function saveGame(data) {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
       },
     }).then(handleResponse);
   };

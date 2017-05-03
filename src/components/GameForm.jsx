@@ -29,22 +29,23 @@ class GameForm extends React.Component {
     e.preventDefault();
 
     // validation
-    let errors = {};
-    if (this.state.title === '') errors.title = "Can't be empty";
-    if (this.state.cover === '') errors.cover = "Can't be empty";
+    // let errors = {};
+    // if (this.state.title === '') errors.title = "Can't be empty";
+    // if (this.state.cover === '') errors.cover = "Can't be empty";
+    // 
+    // this.setState({ errors });
+    //
+    // const isValid = Object.keys(errors).length === 0;
 
-    this.setState({ errors });
-
-    const isValid = Object.keys(errors).length === 0
-
-    if (isValid) {
+    if (true) {
       const { title, cover } = this.state;
       this.setState({ loading: true });
-      console.log(this.state.errors.global);
+      console.log(this.state.errors);
       this.props.saveGame({ title, cover }).then(
         () => {},
         (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
       );
+      console.log(this.state.errors.global);
     }
   }
 
