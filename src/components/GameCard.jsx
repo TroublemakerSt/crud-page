@@ -14,5 +14,5 @@ export default function GameCard({ game }) {
 }
 
 GameCard.propTypes = {
-  game: React.PropTypes.array.isRequired,
+  game: React.PropTypes.object.isRequired,
 };
