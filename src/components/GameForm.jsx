@@ -14,7 +14,7 @@ class GameForm extends React.Component {
     loading: false,
     done: false
   };
-  componentWillReciveProps = (nextProps) => {
+  componentWillReceiveProps = (nextProps) => {
     this.setState({
       _id: nextProps.game._id,
       title: nextProps.game.title,
