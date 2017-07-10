@@ -1,4 +1,4 @@
-import { SET_GAMES, ADD_GAME, GAME_FETCHED } from '../actions/actions';
+import { SET_GAMES, ADD_GAME, GAME_FETCHED, GAME_UPDATED } from '../actions/actions';
 
 export default function games(state = [], action = {}) {
   switch (action.type) {
@@ -12,6 +12,12 @@ export default function games(state = [], action = {}) {
       } else {
         return [...state, action.game];
       }
+
+		case GAME_UPDATED:
+			return state.map(item => {
+				if (item._id === action.game._id) return action.game;
+				return item;
+			})
 
     case ADD_GAME:
       return [...state, action.game];
