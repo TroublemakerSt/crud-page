@@ -25,6 +25,14 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
     });
   });
 
+	app.delete('/api/games/:_id', (req, res) => {
+		db.collection('games').deleteOne({ _id: new mongodb.ObjectId(req.params._id) }, (err, r) => {
+			if (err) { res.status(500).json({ errors: { global: err }}); return; }
+
+			res.json({});
+		})
+	});
+
   app.post('/api/games', (req, res) => {
     const { errors, isValid } = validate(req.body);
     if (isValid) {
