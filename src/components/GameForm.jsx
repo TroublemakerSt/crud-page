@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
 import { saveGame, fetchGame, updateGame } from '../actions/actions';
 
@@ -23,8 +23,9 @@ class GameForm extends React.Component {
   }
 
   componentDidMount = () => {
-    if (this.props.params._id) {
-      this.props.fetchGame(this.props.params._id);
+		const { match } = this.props;
+    if (match.params._id) {
+      this.props.fetchGame(match.params._id);
     }
   }
 
@@ -117,9 +118,10 @@ class GameForm extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  if (props.params._id) {
+	const { match } = props;
+  if (match.params._id) {
     return {
-      game: state.games.find(item => item._id === props.params._id)
+      game: state.games.find(item => item._id === match.params._id)
     }
   }
 
